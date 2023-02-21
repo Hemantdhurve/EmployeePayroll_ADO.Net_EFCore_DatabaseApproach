@@ -8,5 +8,6 @@ namespace RepositoryLayer.Interface
     public interface IEmployeeRL
     {
         public EmployeeModel AddEmployee(EmployeeModel employeeModel);
+        public IEnumerable<EmployeeModel> RetriveEmployees();
     }
 }

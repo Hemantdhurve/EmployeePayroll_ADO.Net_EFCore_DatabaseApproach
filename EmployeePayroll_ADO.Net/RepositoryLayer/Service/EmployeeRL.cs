@@ -58,5 +58,47 @@ namespace RepositoryLayer.Service
             }
         }
 
+        public IEnumerable<EmployeeModel> RetriveEmployees()
+        {
+            List<EmployeeModel> employeeList=new List<EmployeeModel>();
+            using (con)
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SPRetriveALLEmployee", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    con.Open();
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+                    if (dataReader != null)
+                    {
+                        while(dataReader.Read())
+                        {
+                            employeeList.Add(new EmployeeModel()
+                            {
+                                EmployeeId = Convert.ToInt32(dataReader["EmployeeId"]),
+                                EmployeeName = dataReader["EmployeeName"].ToString(),
+                                ProfileImg = dataReader["ProfileImg"].ToString(),
+                                Gender = dataReader["Gender"].ToString(),
+                                Department = dataReader["Department"].ToString(),
+                                Salary = Convert.ToInt64(dataReader["Salary"]),
+                                StartDate = Convert.ToDateTime(dataReader["StartDate"]),
+                                Notes = dataReader["Notes"].ToString()
+                            });
+                        }
+                        return employeeList;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
     }
 }

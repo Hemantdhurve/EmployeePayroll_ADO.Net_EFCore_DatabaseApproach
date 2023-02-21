@@ -42,3 +42,10 @@ create procedure SPAddEmployee
 			)
 		end
 
+--Creating Stored Proedure for the Retrive All Employees
+
+create procedure SPRetriveALLEmployee
+as
+	begin
+		select * from EmployeeTable
+	end

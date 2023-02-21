@@ -26,5 +26,18 @@ namespace BusinessLayer.Service
                 throw;
             }
         }
+
+        public IEnumerable<EmployeeModel> RetriveEmployees()
+        {
+            try
+            {
+                return iemployeeRL.RetriveEmployees();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

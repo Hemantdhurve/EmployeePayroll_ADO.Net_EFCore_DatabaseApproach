@@ -8,5 +8,6 @@ namespace BusinessLayer.Interface
     public interface IEmployeeBL
     {
         public EmployeeModel AddEmployee(EmployeeModel employeeModel);
+        public IEnumerable<EmployeeModel> RetriveEmployees();
     }
 }

@@ -39,5 +39,28 @@ namespace EmployeePayroll_ADO.Net.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("RetriveAllEmp")]
+
+        public IActionResult RetriveAllEmployee()
+        {
+            try
+            {
+                var result = iemployeeBL.RetriveEmployees();
+                if(result != null)
+                {
+                    return this.Ok(new { Status = true, Message = "Getting All Employees", data = result });
+                }
+                else
+                {
+                    return this.BadRequest(new { Status = false, Message = "Fail to Get All Employees" });
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
