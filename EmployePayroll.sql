@@ -49,3 +49,11 @@ as
 	begin
 		select * from EmployeeTable
 	end
+
+-- Creating Stored Procedure for the Delete Employee
+
+create procedure SPDeleteEmployee @EmployeeId int
+as
+	begin
+		delete from EmployeeTable where EmployeeId=@EmployeeId
+	end

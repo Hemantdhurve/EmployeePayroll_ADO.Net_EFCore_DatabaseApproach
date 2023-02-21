@@ -100,5 +100,33 @@ namespace RepositoryLayer.Service
                 }
             }
         }
+
+        public bool DeleteEmployee(int employeeId)
+        {
+            using (con)
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SPDeleteEmployee", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@EmployeeId", employeeId);
+                    con.Open();
+                    var result= cmd.ExecuteNonQuery();
+                    if(result != null)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
     }
 }

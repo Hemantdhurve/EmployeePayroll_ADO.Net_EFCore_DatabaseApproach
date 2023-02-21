@@ -39,5 +39,18 @@ namespace BusinessLayer.Service
                 throw;
             }
         }
+
+        public bool DeleteEmployee(int employeeId)
+        {
+            try
+            {
+                return iemployeeRL.DeleteEmployee(employeeId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

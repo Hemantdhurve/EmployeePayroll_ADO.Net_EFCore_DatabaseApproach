@@ -62,5 +62,29 @@ namespace EmployeePayroll_ADO.Net.Controllers
                 throw;
             }
         }
+
+        [HttpDelete]
+        [Route("DeleteEmployee")]
+
+        public IActionResult DeleteEmployee(int employeeId)
+        {
+            try
+            {
+                var result = iemployeeBL.DeleteEmployee(employeeId);
+                if(result != null)
+                {
+                    return Ok(new { Status = true,Message="Employee Deleted Successfully",data=result});
+                }
+                else
+                {
+                    return BadRequest(new { Status = false, Message = "Employee Deletion UnSuccessful" });
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
