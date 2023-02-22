@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interface;
 using CommonLayer.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,6 +18,7 @@ namespace EmployeePayroll_ADO.Net.Controllers
             this.iemployeeBL = iemployeeBL;
         }
 
+        [Authorize]
         [HttpPost]
         [Route("AddEmployee")]
         public IActionResult AddEmployee(EmployeeModel employeeModel)
@@ -39,6 +41,7 @@ namespace EmployeePayroll_ADO.Net.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet]
         [Route("RetriveAllEmp")]
 
@@ -63,6 +66,7 @@ namespace EmployeePayroll_ADO.Net.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete]
         [Route("DeleteEmployee")]
 
@@ -87,6 +91,7 @@ namespace EmployeePayroll_ADO.Net.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut]
         [Route("UpdateEmp")]
 

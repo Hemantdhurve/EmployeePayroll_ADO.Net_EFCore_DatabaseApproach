@@ -39,5 +39,29 @@ namespace EmployeePayroll_ADO.Net.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        [Route("Login")]
+
+        public IActionResult login(AdminLoginModel adminLoginModel)
+        {
+            try
+            {
+                var result = iadminBL.Login(adminLoginModel);
+                if (result != null)
+                {
+                    return Ok(new { Status = true, Message = "Login Successful", data = result });
+                }
+                else
+                {
+                    return BadRequest(new { Status = false, Message = "Login UnSuccessful" });
+                }
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -22,6 +22,16 @@ as
 		insert into AdminTable values(@FullName,@Email,@Password,@MobileNumber)
 	end
 
+--Creating stored procedure for the Login
+
+create procedure SPLogin
+	@Email varchar(50),
+	@Password varchar(100)
+as
+	begin
+		select Email, Password from AdminTable where Email=@Email and Password=@Password
+	end
+
 
 --create Table of employee 
 
