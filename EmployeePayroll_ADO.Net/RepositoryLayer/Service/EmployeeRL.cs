@@ -128,5 +128,42 @@ namespace RepositoryLayer.Service
                 }
             }
         }
+
+        public EmployeeModel UpdateEmployee(EmployeeModel employeeModel,int employeeId)
+        {
+            using (con)
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SPUpdateEmployee", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@EmployeeId", employeeId);
+                    cmd.Parameters.AddWithValue("@EmployeeName", employeeModel.EmployeeName);
+                    cmd.Parameters.AddWithValue("@ProfileImg", employeeModel.ProfileImg);
+                    cmd.Parameters.AddWithValue("@Gender", employeeModel.Gender);
+                    cmd.Parameters.AddWithValue("@Department", employeeModel.Department);
+                    cmd.Parameters.AddWithValue("@Salary", employeeModel.Salary);
+                    cmd.Parameters.AddWithValue("@STartDate", employeeModel.StartDate);
+                    cmd.Parameters.AddWithValue("@Notes", employeeModel.Notes);
+                    con.Open();
+
+                    var result = cmd.ExecuteNonQuery();
+                    if (result != null)
+                    {
+                        return employeeModel;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
     }
 }

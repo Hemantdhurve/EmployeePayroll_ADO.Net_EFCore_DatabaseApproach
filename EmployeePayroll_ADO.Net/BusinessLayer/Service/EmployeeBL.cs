@@ -52,5 +52,17 @@ namespace BusinessLayer.Service
                 throw;
             }
         }
+        public EmployeeModel UpdateEmployee(EmployeeModel employeeModel, int employeeId)
+        {
+            try
+            {
+                return iemployeeRL.UpdateEmployee(employeeModel, employeeId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

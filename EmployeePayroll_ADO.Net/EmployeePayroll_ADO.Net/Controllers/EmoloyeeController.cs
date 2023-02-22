@@ -86,5 +86,29 @@ namespace EmployeePayroll_ADO.Net.Controllers
                 throw;
             }
         }
+
+        [HttpPut]
+        [Route("UpdateEmp")]
+
+        public IActionResult UpdateEmployee(int employeeId,EmployeeModel employeeModel)
+        {
+            try
+            {
+                var result = iemployeeBL.UpdateEmployee(employeeModel, employeeId);
+                if (result != null)
+                {
+                    return Ok(new { Status = true, Message = "Employee Successfully Updated", data = result });
+                }
+                else
+                {
+                    return BadRequest(new { Status = false, Message = "Employee Updation UnSuccessful" });
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

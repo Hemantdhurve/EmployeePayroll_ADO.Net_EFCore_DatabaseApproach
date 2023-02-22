@@ -57,3 +57,30 @@ as
 	begin
 		delete from EmployeeTable where EmployeeId=@EmployeeId
 	end
+
+
+--Creating Store Procedure for the Update Employee
+
+create procedure SPUpdateEmployee
+( 
+	@EmployeeId int,
+	@EmployeeName varchar(200),
+	@ProfileImg varchar(max),
+	@Gender varchar(50),
+	@Department varchar(max),
+	@Salary bigint,
+	@StartDate DateTime,
+	@Notes varchar(max)
+)
+as
+	begin
+		update EmployeeTable set 
+				EmployeeName=@EmployeeName,
+				ProfileImg=@ProfileImg,
+				Gender=@Gender,
+				Department=@Department,
+				Salary=@Salary,
+				StartDate=@StartDate,
+				Notes=@Notes
+				where EmployeeId=@EmployeeId
+	end
