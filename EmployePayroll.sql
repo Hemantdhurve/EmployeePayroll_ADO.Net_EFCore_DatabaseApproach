@@ -1,5 +1,28 @@
 create database EmployeePayrollADO;
 
+-Creating UserTable
+
+create table AdminTable 
+(
+	AdminId int primary key identity(1,1) not null,
+	FullName varchar(200) not null,
+	Email varchar(200) not null,
+	Password varchar(100) not null,
+	MobileNumner bigint 
+)
+
+select * from AdminTable;
+
+--creating Stored Procedure for the Login
+
+create procedure SPRegistration
+	@FullName varchar(200),@Email varchar(200),@Password varchar(100),@MobileNumber bigint
+as
+	begin
+		insert into AdminTable values(@FullName,@Email,@Password,@MobileNumber)
+	end
+
+
 --create Table of employee 
 
 create table EmployeeTable

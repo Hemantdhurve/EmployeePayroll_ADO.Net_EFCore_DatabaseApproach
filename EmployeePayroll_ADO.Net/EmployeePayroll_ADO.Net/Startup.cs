@@ -34,6 +34,9 @@ namespace EmployeePayroll_ADO.Net
             services.AddControllers();
             services.AddAuthentication(IISServerDefaults.AuthenticationScheme);
 
+            services.AddTransient<IAdminBL, AdminBL>();
+            services.AddTransient<IAdminRL,AdminRL>();
+
             services.AddTransient<IEmployeeBL, EmployeeBL>();
             services.AddTransient<IEmployeeRL, EmployeeRL>();
 
